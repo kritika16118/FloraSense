@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Identify Plant - FloraSense</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <header>
+        <nav class="navbar">
+
+            <div class="logo">
+                🌿 FloraSense
+            </div>
+
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="identify.html">Identify</a>
+                <a href="#">My Garden</a>
+                <a href="#">Plant Health</a>
+                <a href="#">FloraAI</a>
+            </div>
+
+            <button class="login-btn">
+                Login
+            </button>
+
+        </nav>
+    </header>
+
+
+    <!-- Identification Section -->
+
+    <main>
+
+        <section class="identify-section">
+
+            <div class="identify-header">
+
+                <p class="small-title">
+                    🔍 PLANT IDENTIFICATION
+                </p>
+
+                <h1>
+                    What plant is this?
+                </h1>
+
+                <p>
+                    Upload a clear photo of your plant and FloraSense
+                    will analyze it using AI.
+                </p>
+
+            </div>
+
+
+            <!-- Professional Upload Section -->
+
+<div class="plant-upload-wrapper">
+
+    <div
+        class="plant-upload-box"
+        id="upload-box"
+    >
+
+        <div class="upload-leaf">
+            🌿
+        </div>
+
+        <h2>
+            Upload a photo of your plant
+        </h2>
+
+        <p class="upload-description">
+            Get your plant identified and receive personalized
+            care recommendations.
+        </p>
+
+
+        <!-- Upload Options -->
+
+        <div class="upload-actions">
+
+            <label
+                for="plant-image"
+                class="browse-btn"
+            >
+                📁 Browse Image
+            </label>
+
+            <label
+                for="camera-input"
+                class="camera-btn"
+            >
+                📷 Take Photo
+            </label>
+
+        </div>
+
+
+        <input
+            type="file"
+            id="plant-image"
+            accept="image/*"
+            hidden
+        >
+
+        <input
+            type="file"
+            id="camera-input"
+            accept="image/*"
+            capture="environment"
+            hidden
+        >
+
+
+        <p class="upload-format">
+            JPG, JPEG or PNG • Maximum 10 MB
+        </p>
+
+        <div class="drop-message">
+            <span>↕</span>
+            Drag & drop your image here
+        </div>
+
+    </div>
+
+
+    <!-- Image Preview -->
+
+    <div
+        class="image-preview-card"
+        id="preview-container"
+    >
+
+        <div class="preview-header">
+
+            <div>
+                <h3>🌱 Your Plant</h3>
+
+                <p>
+                    Image ready for analysis
+                </p>
+            </div>
+
+            <button
+                class="remove-image"
+                id="remove-image"
+            >
+                ✕
+            </button>
+
+        </div>
+
+
+        <div class="preview-image-wrapper">
+
+            <img
+                id="image-preview"
+                src=""
+                alt="Selected plant"
+            >
+
+        </div>
+
+
+        <button
+            id="analyze-button"
+            class="analyze-btn"
+        >
+            ✨ Analyze My Plant
+        </button>
+
+    </div>
+
+
+    <!-- Analysis Status -->
+
+    <div
+        class="analysis-status"
+        id="analysis-status"
+    >
+
+        <div class="loading-leaf">
+            🌿
+        </div>
+
+        <h3>
+            FloraSense is analyzing your plant...
+        </h3>
+
+        <p>
+            Identifying the plant and checking its health.
+        </p>
+
+        <div class="loading-bar">
+            <div class="loading-progress"></div>
+        </div>
+
+    </div>
+
+
+    <!-- Result -->
+
+    <div
+        class="result-container"
+        id="result-container"
+    >
+
+        <h2>
+            🌱 Plant Identified
+        </h2>
+
+        <div class="result-card">
+
+            <h3 id="plant-name">
+                -
+            </h3>
+
+            <p id="plant-confidence">
+                -
+            </p>
+
+            <p id="plant-description">
+                -
+            </p>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+            <!-- Image Preview -->
+
+            <div class="preview-container" id="preview-container">
+
+                <h2>
+                    Image Preview
+                </h2>
+
+                <img
+                    id="image-preview"
+                    src=""
+                    alt="Plant Preview"
+                >
+
+                <button
+                    id="analyze-button"
+                    class="primary-btn"
+                >
+                    🌿 Analyze Plant
+                </button>
+
+            </div>
+
+
+            <!-- Result -->
+
+            <div
+                class="result-container"
+                id="result-container"
+            >
+
+                <h2>
+                    🌱 Plant Identified
+                </h2>
+
+                <div class="result-card">
+
+                    <h3 id="plant-name">
+                        -
+                    </h3>
+
+                    <p id="plant-confidence">
+                        -
+                    </p>
+
+                    <p id="plant-description">
+                        -
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <footer>
+
+        <p>
+            🌿 FloraSense — Understand. Care. Grow.
+        </p>
+
+    </footer>
+
+
+    <script src="identify.js"></script>
+
+</body>
+</html>
