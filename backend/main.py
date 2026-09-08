@@ -4,9 +4,16 @@ from transformers import AutoImageProcessor, AutoModelForImageClassification
 from PIL import Image
 import torch
 import io
+
 from plant_data import PLANT_CARE_DATA
 
+
 app = FastAPI()
+
+
+# ========================================
+# CORS
+# ========================================
 
 app.add_middleware(
     CORSMiddleware,
@@ -15,6 +22,7 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
 
 # ========================================
 # LOAD PLANT AI MODEL
@@ -41,10 +49,7 @@ print("FloraSense plant AI model loaded! 🌿")
 def home():
 
     return {
-    "success": True,
-    "plant_name": plant_name,
-    "confidence": round(confidence, 2),
-    "message": "Plant identified successfully 🌱"
+        "message": "FloraSense backend is running 🌿"
     }
 
 
@@ -57,6 +62,7 @@ async def identify_plant(image: UploadFile = File(...)):
 
     # Read uploaded image
     image_data = await image.read()
+
 
     # Open image
     plant_image = Image.open(
@@ -97,6 +103,11 @@ async def identify_plant(image: UploadFile = File(...)):
     )
 
 
+    # Get plant care information
+    care = PLANT_CARE_DATA.get(plant_name)
+
+
+    # Return result
     return {
 
         "success": True,
@@ -107,6 +118,8 @@ async def identify_plant(image: UploadFile = File(...)):
             confidence,
             2
         ),
+
+        "care": care,
 
         "message": "Plant identified successfully 🌱"
 
