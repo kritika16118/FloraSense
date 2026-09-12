@@ -58,5 +58,17 @@ PLANT_CARE_DATA = {
         "lifespan": "Usually 1–3 years depending on conditions",
         "difficulty": "Easy",
         "tip": "Give Tulsi plenty of sunlight and avoid letting the soil remain completely dry for long periods.",
-    }
+    },
+
+    "Coleus scutellarioides": {
+       "water": "Water when the top layer of soil begins to dry",
+       "sunlight": "Bright, indirect light",
+       "temperature": "18–30°C",
+       "humidity": "40–70%",
+       "soil": "Rich, well-draining soil",
+       "fertilizer": "Every 2–4 weeks during the growing season",
+       "lifespan": "Usually 1–3 years when grown as an annual",
+       "difficulty": "Easy",
+       "tip": "Give Coleus bright, indirect light and keep the soil lightly moist without overwatering."
+}
 }
