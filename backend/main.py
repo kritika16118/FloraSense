@@ -6,6 +6,7 @@ import torch
 import io
 
 from plant_data import PLANT_CARE_DATA
+from plant_api import search_plant
 
 
 app = FastAPI()
@@ -101,10 +102,37 @@ async def identify_plant(image: UploadFile = File(...)):
     confidence = (
         probabilities[0][top_result].item() * 100
     )
-
-
     # Get plant care information
     care = PLANT_CARE_DATA.get(plant_name)
+
+# If local data is unavailable, try Perenual
+    if care is None:
+
+          print("Plant not found in local database.")
+          print("Searching Perenual...")
+
+          perenual_result = search_plant(plant_name)
+
+          if perenual_result:
+
+             sunlight = perenual_result.get("sunlight")
+
+             if isinstance(sunlight, list):
+               sunlight = ", ".join(sunlight)
+
+             care = {
+            "water": perenual_result.get("watering") or "Information not available",
+            "sunlight": sunlight or "Information not available",
+            "temperature": "Information not available",
+            "humidity": "Information not available",
+            "soil": "Information not available",
+            "fertilizer": "Information not available",
+            "lifespan": "Information not available",
+            "difficulty": "Information not available",
+            "tip": "Follow the recommended watering and sunlight requirements for this plant."
+            }
+
+    
 
 
     # Return result
