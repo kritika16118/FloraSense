@@ -108,33 +108,37 @@ async def identify_plant(image: UploadFile = File(...)):
 # If local data is unavailable, try Perenual
     if care is None:
 
-          print("Plant not found in local database.")
-          print("Searching Perenual...")
+     print("Plant not found in local database.")
+     print("Searching Perenual...")
 
-          perenual_result = search_plant(plant_name)
+    perenual_result = search_plant(plant_name)
 
-          if perenual_result:
+    if perenual_result:
 
-             sunlight = perenual_result.get("sunlight")
+        common_name = perenual_result.get("common_name")
+        scientific_name = perenual_result.get("scientific_name")
+        family = perenual_result.get("family")
+        genus = perenual_result.get("genus")
 
-             if isinstance(sunlight, list):
-               sunlight = ", ".join(sunlight)
+        if isinstance(scientific_name, list):
+            scientific_name = ", ".join(scientific_name)
 
-             care = {
-            "water": perenual_result.get("watering") or "Information not available",
-            "sunlight": sunlight or "Information not available",
+        care = {
+            "water": "Information not available",
+            "sunlight": "Information not available",
             "temperature": "Information not available",
             "humidity": "Information not available",
             "soil": "Information not available",
             "fertilizer": "Information not available",
             "lifespan": "Information not available",
             "difficulty": "Information not available",
-            "tip": "Follow the recommended watering and sunlight requirements for this plant."
-            }
+            "tip": f"{common_name or plant_name} belongs to the {family or 'plant'} family."
+        }
 
-    
-
-
+        print("Perenual plant:", common_name)
+        print("Scientific name:", scientific_name)
+        print("Family:", family)
+        print("Genus:", genus)
     # Return result
     return {
 
